@@ -1,0 +1,16 @@
+```
+brew install postgres
+brew services start postgresql
+(brew services stop postgresql)
+
+sudo -u postgres createuser --superuser vivi
+sudo -u vivi createdb blog
+\l (list all databases)
+\q (quit)
+```
+
+```
+brew tap heroku/brew && brew install heroku
+
+heroku --version
+```
