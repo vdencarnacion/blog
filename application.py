@@ -6,7 +6,8 @@ from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 # , Subgroup, Link, Text, Separator
 
-# from models import *
+# from models import Education, Experience
+
 from dotenv import load_dotenv
 load_dotenv()
 
