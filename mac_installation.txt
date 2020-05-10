@@ -7,10 +7,16 @@ sudo -u postgres createuser --superuser vivi
 sudo -u vivi createdb blog
 \l (list all databases)
 \q (quit)
+
+psql postgres -U newuser
 ```
 
 ```
 brew tap heroku/brew && brew install heroku
 
 heroku --version
+```
+
+```
+export APP_SETTINGS="config.DevelopmentConfig"
 ```

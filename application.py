@@ -1,17 +1,22 @@
 import os
 
+from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 # , Subgroup, Link, Text, Separator
 
-from models import *
+# from models import *
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
+app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv('TRACK_MODIFICATIONS')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db.init_app(app)
+db = SQLAlchemy(app)
 
 nav = Nav(app)
 
@@ -51,10 +56,5 @@ def contact():
     return render_template('base.html', title=title, body=body)
 
 
-def main():
-    db.create_all()
-
-
 if __name__ == '__main__':
-    with app.app_context():
-        main()
+    app.run()
